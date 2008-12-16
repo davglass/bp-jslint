@@ -11,6 +11,15 @@
 
     <script type="text/javascript" src="http://bp.yahooapis.com/2.1.11/browserplus.js"></script>  
     <script type="text/javascript" src="../src/js/bp-jslint.js"></script>  
-    <script type="text/javascript" src="one.js"></script>  
+    <script type="text/javascript">
+        var bar = function() {};
+        var foo = new bar();
+
+        foo++;
+
+        for (i in test) {
+            alert(i);
+        }
+    </script>  
 </body>  
 </html>

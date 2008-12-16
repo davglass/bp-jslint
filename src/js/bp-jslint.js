@@ -6,8 +6,12 @@
             return false;
         },
         callback: function(data) {
+            console.log(data);
             if (data && data.status) {
                 if (data.errors) {
+                    if (data.url) {
+                        BPJSLint.log('URL: ' + data.url + '<br>');
+                    }
                     for (var i = 0; i < data.errors.length; i++) {
                         BPJSLint.log(data.errors[i].line + ', ' + data.errors[i].character + ': <pre>' + data.errors[i].data + '\n' + data.errors[i].reason + '</pre>');
                     }
@@ -42,7 +46,7 @@
             s.border = '1px solid black';
             s.position = 'absolute';
             //s.height = '50px';
-            s.width = '400px';
+            //s.width = '400px';
             s.top = '3px';
             s.left = '3px';
             s.padding = '5px';

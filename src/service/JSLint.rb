@@ -13,24 +13,29 @@ class JSLint
     def initialize(args)
     end
 
-    def _lint(txt)
+    def _lint(txt, url)
         #@callback.invoke('_lint')
         res2 = Net::HTTP.post_form(URI.parse('http://jslint.davglass.com/'), { 'source' => txt })
         puts res2.body
         
         #@callback.invoke(res2.body)
         obj = JSON.parse(res2.body)
+        if url
+            obj['url'] = url
+        end
         @callback.invoke(obj)
     end
 
     def _getText(file)
+        #Here I should be able to run jslint locally if they have java installed
+        # if they don't I can fall back to the web service
         #@callback.invoke('_getText')
         #tmpFil = Tempfile.new('jslint')
         #tFile = File.new(tmpFil.path, "w+")
 
         res = Net::HTTP.get_response(URI.parse(file))
         #tFile.puts res.body
-        _lint(res.body)
+        _lint(res.body, file)
     end
 
     def jslint(bp, args)
