@@ -1,50 +1,15 @@
 <html>  
 <head>
     <title>Using BrowserPlus Services</title>
-    <style type="text/css" media="screen">
-        #result {border:1px solid #999; background:#ccc; font-size:8pt;padding:5px;}
-    </style>
 </head>  
 <body>  
 
     <p>
     </p>
 
-    <pre id="result">Samples displayed here...</pre>
 
     <script type="text/javascript" src="http://bp.yahooapis.com/2.1.11/browserplus.js"></script>  
-    <script type="text/javascript">  
-
-    
-    var mycb = function(r) {
-        console.log(r);
-    };
-
-    var err = function(f, result) {
-        console.log(f + " Error: " + result.error + (result.verboseError ? (": " + result.verboseError) : ""));
-    };
-
-    BrowserPlus.init(function(res) {  
-        if (res.success) {  
-            BrowserPlus.require({
-                services: [
-                    {
-                        service: "JSLint",
-                        version: "0",
-                        minversion: "0.0.1"
-                    }
-                ]
-            }, function(r) {
-                if (r.success) {  
-                    BrowserPlus.JSLint.jslint({ callback: mycb, scripts: ['one', 'two'] }, function(x){});
-                } else {
-                    err("REQUIRE", r);
-                }
-            });
-        } else {
-            err("INIT", res);
-        }
-    });
-    </script>  
+    <script type="text/javascript" src="../src/js/bp-jslint.js"></script>  
+    <script type="text/javascript" src="one.js"></script>  
 </body>  
 </html>
