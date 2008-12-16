@@ -7,6 +7,9 @@
 #
 # 
 class JSLint
+    # an initialize function is _required_
+    def initialize(args)
+    end
 
     def jslint(bp, args)
         #
@@ -33,7 +36,10 @@ rubyCoreletDefinition = {
       [
          {
             'name' => 'scripts',
-            'type' => 'array',
+            # valid types will be documented on our site shortly,
+            # we'll also improve log messages to clearly indicate when you
+            # specify an invalid type.  !array, but list
+            'type' => 'list',
             'required' => true,
             'documentation' => 'todo'
           },
@@ -46,4 +52,4 @@ rubyCoreletDefinition = {
       ]
     }
   ] 
-}
+  }
