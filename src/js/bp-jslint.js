@@ -3,7 +3,7 @@
     BPJSLint = {
         error: function() {
             //console.log('error: ', arguments);
-            return false;
+            return true;
         },
         callback: function(data) {
             if (data && data.status) {
@@ -25,7 +25,18 @@
                 if (sc[i].src) {
                     //Ignore code from yahooapis and this file..
                     if ((sc[i].src.indexOf('yahooapis') == -1) && (sc[i].src.indexOf('bp-jslint.js') == -1)) {
+                        //data.src = sc[i].src;
                         data.src = sc[i].src;
+                        if (data.src.indexOf('http:/'+'/') == -1) {
+                            //This is for IE
+                            var str = '';
+                            var host = location.href;
+                            var parts = host.split('/');
+                            delete parts[parts.length - 1]
+                            var url = parts.join('/');
+                            
+                            data.src = url + data.src;
+                        }
                     } else {
                         data = null;
                     }
