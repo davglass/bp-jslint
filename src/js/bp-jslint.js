@@ -6,7 +6,6 @@
             return false;
         },
         callback: function(data) {
-            console.log(data);
             if (data && data.status) {
                 if (data.errors) {
                     if (data.url) {
