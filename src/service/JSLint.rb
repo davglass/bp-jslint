@@ -52,7 +52,7 @@ class JSLint
                 _getText(script['src'])
             end
             if script['txt']
-                _lint(script['txt'])
+                _lint(script['txt'], false)
             end
         end
     end
